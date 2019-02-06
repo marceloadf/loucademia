@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="ISO-8859-1">
+<title>Loucademia</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<header>
+		<img src="images/Loucademia_Logotipo.png" />
+		<nav>
+			<div>
+				<a href="novoAluno.html">Novo Aluno</a><br> <a
+					href="pesquisaAluno.html">Pesquisa Aluno</a><br> <a
+					href="controleAcesso.html">Controle de Acesso</a><br> <a
+					href="relatorioEntradasSaidas.html">Relatórios de Entradas e
+					Saídas</a><br> <a href="relatorioSituacoes.html">Relatórios de
+					Situações</a><br>
+			</div>
+		</nav>
+	</header>
+
+	<br>
+
+	<h1>Relatório de Entradas e Saídas teste</h1>
+	
+	<div id="infoMensagem">Mostrar possível teste de erro</div>	
+	
+	<br>
+
+	<fieldset>
+		<legend>Parâmetros</legend>
+		<label for="id">ID:</label><br>
+		<input type="text" name="id" id="id"><br>
+		<label for="dtIn">Data Inicial:</label><br>
+		<input type="date" name="dtIn" id="dtIn"><br>
+		<label for="dtFim">Data Final:</label><br>
+		<input type="date" name="dtFim" id="dtFim"><br>
+	</fieldset>
+	
+	<br>
+	
+	<input type="button" value="Gerar" name="btnGerar" id="btnGerar">
+	
+	<br><br>
+	
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Nome</th>
+			<th>Entrada</th>
+			<th>Saída</th>
+			<th>Duração</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Augusto</td>
+			<td>23/01/2019 12:00:00</td>
+			<td>23/01/2019 13:50:00</td>
+			<td>01:50:00</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Amanda</td>
+			<td>23/01/2019 13:00:00</td>
+			<td>23/01/2019 13:50:00</td>
+			<td>00:50:00</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Zé Maromba</td>
+			<td>23/01/2019 13:00:00</td>
+			<td>23/01/2019 16:00:00</td>
+			<td>02:00:00</td>
+		</tr>
+	</table>
+	
+</body>
+</html>

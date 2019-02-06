@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="ISO-8859-1">
+<title>Loucademia</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<header>
+		<img src="images/Loucademia_Logotipo.png" />
+		<nav>
+			<div>
+				<a href="novoAluno.html">Novo Aluno</a><br> <a
+					href="pesquisaAluno.html">Pesquisa Aluno</a><br> <a
+					href="controleAcesso.html">Controle de Acesso</a><br> <a
+					href="relatorioEntradasSaidas.html">Relatórios de Entradas e
+					Saídas</a><br> <a href="relatorioSituacoes.html">Relatórios de
+					Situações</a><br>
+			</div>
+		</nav>
+	</header>
+
+	<br>
+
+	<h1>Relatório de Situações</h1>
+	
+	<br>
+	
+	<div id="infoMensagem">Mostrar possível mensagem de erro</div>
+	
+	<br>
+
+	<fieldset>
+		<legend>Parâmetros</legend>
+		<label for="situacao">Situação:</label><br>
+		<select id="situacao">
+			<option>Ativo</option>
+			<option>Inativo</option>
+			<option>Com Pendência</option>
+		</select>
+	</fieldset>
+	
+	<br>
+	
+	<input type="button" value="Gerar" name="btnGerar" id="btnGerar">
+	
+	<br><br>
+	
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Nome</th>
+			<th>Situação</th>
+			<th>Celular</th>
+			<th>Fixo</th>
+			<th>Ações</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Marcelo</td>
+			<td>Ativo</td>
+			<td>71 988052069</td>
+			<td>22 25372171</td>
+			<td>
+				<input type="button" value="Editar" name="btnEditar" id="btnEditar"/>
+			</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Amanda</td>
+			<td>Inativo</td>
+			<td>71 954698754</td>
+			<td>22 23564587</td>
+			<td>
+				<input type="button" value="Editar" name="btnEditar" id="btnEditar"/>
+			</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Zé Fit</td>
+			<td>Com Pendência</td>
+			<td>71 956487512</td>
+			<td>22 23564879</td>
+			<td>
+				<input type="button" value="Editar" name="btnEditar" id="btnEditar"/>
+			</td>
+		</tr>
+	</table>
+	
+</body>
+</html>
