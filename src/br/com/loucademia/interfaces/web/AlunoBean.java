@@ -13,6 +13,11 @@ public class AlunoBean implements Serializable{
 	
 	private Aluno aluno = new Aluno();
 	
+	public String gravar() {
+		System.out.println("ALUNO ==> " + aluno);
+		return null;
+	}
+	
 	public Aluno getAluno() {
 		return aluno;
 	}
