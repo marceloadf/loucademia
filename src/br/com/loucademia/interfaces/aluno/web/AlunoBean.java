@@ -1,4 +1,4 @@
-package br.com.loucademia.interfaces.web;
+package br.com.loucademia.interfaces.aluno.web;
 
 import java.io.Serializable;
 

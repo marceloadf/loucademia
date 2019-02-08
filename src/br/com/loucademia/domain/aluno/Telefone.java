@@ -1,15 +1,16 @@
 package br.com.loucademia.domain.aluno;
 
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Telefone {
+public class Telefone{
 	
-	@Column(name = "CELULAR_DD", nullable = true, length = 2)
+	@Column(name = "CELULAR_DD", nullable = false, length = 2)
 	private Integer ddCelular;
 	
-	@Column(name = "NUMERO_CELULAR", nullable = true, length = 9)
+	@Column(name = "NUMERO_CELULAR", nullable = false, length = 9)
 	private Integer numeroCelular;
 	
 	@Column(name = "FIXO_DD", nullable = true, length = 2)
