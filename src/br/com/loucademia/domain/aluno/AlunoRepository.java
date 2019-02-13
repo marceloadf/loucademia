@@ -1,5 +1,7 @@
 package br.com.loucademia.domain.aluno;
 
+import java.time.Year;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,6 +29,12 @@ public class AlunoRepository {
 		
 		if(aluno != null) 
 			em.remove(aluno);		
+	}
+	
+	public String getMaxMatriculaAno() {
+		return em.createQuery("SELECT MAX(a.matricula) FROM Aluno a WHERE a.matricula LIKE :ano", String.class)
+			.setParameter("ano", Year.now() + "%")
+			.getSingleResult();
 	}
 
 }
