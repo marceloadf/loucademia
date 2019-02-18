@@ -54,7 +54,7 @@
 				<td>#{a.rg}</td>
 				<td>#{a.email}</td>
 				<td>#{a.situacao}</td>
-				<td>
+				<td> 
 					<input type="button" value="Editar" jsf:outcome="dadosAluno?matricula=#{a.matricula}"/> 
 					<input type="submit" onclick="return confirm('Deseja excluir o aluno #{a.matricula} ?');" value="Excluir" jsf:action="#{pesquisaAlunoBean.excluir(a.matricula)}"/>
 				</td>

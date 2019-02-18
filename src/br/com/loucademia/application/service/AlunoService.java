@@ -36,7 +36,7 @@ public class AlunoService {
 		Validation.assertNotEmpty(aluno);
 		Validation.assertNotEmpty(aluno.getMatricula());
 		alunoRepository.update(aluno);
-	}
+	} 
 	
 	public Aluno findByMatricula(String matricula) {
 		return alunoRepository.findByMatricula(matricula);

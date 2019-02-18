@@ -36,7 +36,7 @@ public class PesquisaAlunoBean implements Serializable{
 	public String excluir(String matricula) {
 		alunoService.delete(matricula);
 		return null;
-	}
+	} 
 	
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
