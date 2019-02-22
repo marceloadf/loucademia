@@ -44,6 +44,7 @@
 				<th>Nome</th>
 				<th>RG</th>
 				<th>E-mail</th>
+				<th>Telefone(s)</th>
 				<th>Situação</th>
 				<th>Ações</th>
 			</tr>
@@ -53,6 +54,7 @@
 				<td>#{a.nome}</td>
 				<td>#{a.rg}</td>
 				<td>#{a.email}</td>
+				<td>#{pesquisaAlunoBean.maskTelefone(a.telefone.ddFixo, a.telefone.numeroFixo)}<br/> #{pesquisaAlunoBean.maskTelefone(a.telefone.ddCelular, a.telefone.numeroCelular)}</td>
 				<td>#{a.situacao}</td>
 				<td> 
 					<input type="button" value="Editar" jsf:outcome="dadosAluno?matricula=#{a.matricula}"/> 

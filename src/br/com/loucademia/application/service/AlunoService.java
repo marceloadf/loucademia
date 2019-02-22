@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 
 import br.com.loucademia.application.util.StringUtils;
 import br.com.loucademia.application.util.Validation;
+import br.com.loucademia.application.util.ValidationException;
 import br.com.loucademia.domain.aluno.Aluno;
 import br.com.loucademia.domain.aluno.AlunoRepository;
 
@@ -43,7 +44,11 @@ public class AlunoService {
 	}
 	
 	public List<Aluno> listAlunos(String matricula, String nome, Integer rg, Integer telefone){
-		return List.of(alunoRepository.findByMatricula(matricula));
+		//return List.of(alunoRepository.findByMatricula(matricula));
+		if(StringUtils.isEmpty(matricula) && StringUtils.isEmpty(nome) && rg == null && telefone == null)
+			throw new ValidationException("Pelo menos um critério de pesquisa deve ser fornecido");
+		
+		return alunoRepository.listAlunos(matricula, nome, rg, telefone);
 	}
 	
 	public void delete(String matricula) {
