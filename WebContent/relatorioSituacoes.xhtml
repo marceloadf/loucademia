@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" lang="pt-br">
+<ui:composition template="template/layout.xhtml">
+	<ui:define name="conteudo">
+
+		<br />
+		<h1>Relatório de Situações</h1>
+
+		<br />
+		<form jsf:id="form">
+			<fieldset>
+				<legend>Parâmetros</legend>
+				<label for="situacao">Situação:</label>
+				<br />
+				<select id="situacao">
+					<option>Ativo</option>
+					<option>Inativo</option>
+					<option>Com Pendência</option>
+				</select>
+			</fieldset>
+			<br />
+			<input type="button" value="Gerar" name="btnGerar" id="btnGerar" />
+		</form>
+
+		<br />
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Situação</th>
+				<th>Celular</th>
+				<th>Fixo</th>
+				<th>Ações</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Marcelo</td>
+				<td>Ativo</td>
+				<td>71 988052069</td>
+				<td>22 25372171</td>
+				<td>
+					<input type="button" value="Editar" name="btnEditar" id="btnEditar" />
+				</td>
+			</tr>
+		</table>
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -13,22 +13,25 @@
 				<h:messages />
 			</div>
 		</h:panelGroup>
-		<br/>
+		<br />
 		<form jsf:id="form">
 
 			<fieldset>
 				<label for="id">ID:</label>
-				<br/> 
-				<input type="text" jsf:value="#{controleAcessoBean.matricula}" name="id" id="id"/>
-				<br/> 
+				<br />
+				<input type="text" jsf:value="#{controleAcessoBean.matricula}"
+					name="id" id="id" />
+				<br />
 				<label for="rg">RG:</label>
-				<br/>
-				<input type="text" jsf:value="#{controleAcessoBean.rg}" name="rg" id="rg"/>
-				<br/>
+				<br />
+				<input type="text" jsf:value="#{controleAcessoBean.rg}" name="rg"
+					id="rg" />
+				<br />
 			</fieldset>
 
-			<br/> 
-			<input type="submit" name="btnLogin" id="btnLogin" value="Entrar" jsf:action="#{controleAcessoBean.registrarAcesso}"/>
+			<br />
+			<input type="submit" name="btnLogin" id="btnLogin" value="Entrar"
+				jsf:action="#{controleAcessoBean.registrarAcesso}" />
 		</form>
 	</ui:define>
 </ui:composition>

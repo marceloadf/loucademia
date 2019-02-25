@@ -6,64 +6,76 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:jsf="http://xmlns.jcp.org/jsf" lang="pt-br">
 <ui:composition template="template/layout.xhtml">
+	<ui:define name="title">Pesquisa Aluno</ui:define>
 	<ui:define name="conteudo">
-
-		<h1>Pesquisa de Aluno</h1>
-
-		<h:panelGroup rendered="#{!facesContext.messageList.isEmpty()}">
-			<div id="infoMensagem">
-				<h:messages />
-			</div>
-		</h:panelGroup>
-
 		<br />
 		<form jsf:id="form">
-		<fieldset>
-			<legend>Parâmetros de Pesquisa</legend>
-			<label for="id" >Matrícula:</label><br /> 
-			<input type="text" jsf:value="#{pesquisaAlunoBean.matricula}" name="id" id="id" /><br />
-			<label for="nome">Nome:</label>
-			<br /> 
-			<input type="text" jsf:value="#{pesquisaAlunoBean.nome}" name="nome" id="nome" /><br />
-			<label for="rg">RG:</label><br /> 
-			<input type="text" jsf:value="#{pesquisaAlunoBean.rg}" name="rg" id="rg" /><br />
-			<label for="tel">Telefone:</label><br />
-			<input type="tel" jsf:value="#{pesquisaAlunoBean.telefone}" name="telNum" id="telNum" />
-		</fieldset>
+			<fieldset>
+				<legend>Parâmetros de Pesquisa</legend>
+				<label for="id">Matrícula:</label>
+				<br />
+				<input type="text" jsf:value="#{pesquisaAlunoBean.matricula}"
+					name="id" id="id" />
+				<br />
+				<label for="nome">Nome:</label>
+				<br />
+				<input type="text" jsf:value="#{pesquisaAlunoBean.nome}" name="nome"
+					id="nome" />
+				<br />
+				<label for="rg">RG:</label>
+				<br />
+				<input type="text" jsf:value="#{pesquisaAlunoBean.rg}" name="rg"
+					id="rg" />
+				<br />
+				<label for="tel">Telefone:</label>
+				<br />
+				<input type="tel" jsf:value="#{pesquisaAlunoBean.telefone}"
+					name="telNum" id="telNum" />
+			</fieldset>
 
-		<br />
-		<input type="submit" value="Pesquisar" name="btnPesquisar"  
-			id="btnPesquisar" jsf:action="#{pesquisaAlunoBean.pesquisar}"/>
+			<br />
+			<input type="submit" value="Pesquisar" name="btnPesquisar"
+				id="btnPesquisar" jsf:action="#{pesquisaAlunoBean.pesquisar}" />
 
-		<br />
-		<br />
-		<h:panelGroup rendered="#{not empty pesquisaAlunoBean.alunos}">
-		<table>
-			<tr>
-				<th>Matrícula</th>
-				<th>Nome</th>
-				<th>RG</th>
-				<th>E-mail</th>
-				<th>Telefone(s)</th>
-				<th>Situação</th>
-				<th>Ações</th>
-			</tr>
-			<ui:repeat var="a" value="#{pesquisaAlunoBean.alunos}">
-			<tr>
-				<td>#{a.matricula}</td>
-				<td>#{a.nome}</td>
-				<td>#{a.rg}</td>
-				<td>#{a.email}</td>
-				<td>#{pesquisaAlunoBean.maskTelefone(a.telefone.ddFixo, a.telefone.numeroFixo)}<br/> #{pesquisaAlunoBean.maskTelefone(a.telefone.ddCelular, a.telefone.numeroCelular)}</td>
-				<td>#{a.situacao}</td>
-				<td> 
-					<input type="button" value="Editar" jsf:outcome="dadosAluno?matricula=#{a.matricula}"/> 
-					<input type="submit" onclick="return confirm('Deseja excluir o aluno #{a.matricula} ?');" value="Excluir" jsf:action="#{pesquisaAlunoBean.excluir(a.matricula)}"/>
-				</td>
-			</tr>
-			</ui:repeat>
-		</table>
-		</h:panelGroup>
+			<br />
+			<br />
+			<h:panelGroup rendered="#{not empty pesquisaAlunoBean.alunos}">
+				<table>
+					<tr>
+						<th>Matrícula</th>
+						<th>Nome</th>
+						<th>RG</th>
+						<th>E-mail</th>
+						<th>Telefone(s)</th>
+						<th>Situação</th>
+						<th>Ações</th>
+					</tr>
+					<ui:repeat var="a" value="#{pesquisaAlunoBean.alunos}">
+						<tr>
+							<td>#{a.matricula}</td>
+							<td>#{a.nome}</td>
+							<td>#{a.rg}</td>
+							<td>#{a.email}</td>
+							<td>
+								#{pesquisaAlunoBean.maskTelefone(a.telefone.ddFixo,
+								a.telefone.numeroFixo)}
+								<br />
+								#{pesquisaAlunoBean.maskTelefone(a.telefone.ddCelular,
+								a.telefone.numeroCelular)}
+							</td>
+							<td>#{a.situacao}</td>
+							<td>
+								<input type="button" value="Editar"
+									jsf:outcome="dadosAluno?matricula=#{a.matricula}" />
+								<input type="submit"
+									onclick="return confirm('Deseja excluir o aluno #{a.matricula} ?');"
+									value="Excluir"
+									jsf:action="#{pesquisaAlunoBean.excluir(a.matricula)}" />
+							</td>
+						</tr>
+					</ui:repeat>
+				</table>
+			</h:panelGroup>
 		</form>
 	</ui:define>
 </ui:composition>
