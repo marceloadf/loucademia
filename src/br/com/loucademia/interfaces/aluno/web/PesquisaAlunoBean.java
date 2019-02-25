@@ -16,47 +16,47 @@ import br.com.loucademia.domain.aluno.Aluno;
 
 @Named
 @SessionScoped
-public class PesquisaAlunoBean implements Serializable{
+public class PesquisaAlunoBean implements Serializable {
 
 	@EJB
 	private AlunoService alunoService;
-	
+
 	@Inject
 	private FacesContext facesContext;
-	
+
 	private String matricula;
 	private String nome;
 	private Integer telefone;
 	private Integer rg;
-	
+
 	private List<Aluno> alunos;
-	
+
 	public String pesquisar() {
 		try {
 			alunos = alunoService.listAlunos(matricula, nome, rg, telefone);
-		} catch(ValidationException ex) {
+		} catch (ValidationException ex) {
 			facesContext.addMessage(null, new FacesMessage(ex.getLocalizedMessage()));
 		}
 		return null;
 	}
-	
+
 	public String getMatricula() {
 		return matricula;
 	}
-	
+
 	public String excluir(String matricula) {
 		alunoService.delete(matricula);
 		return null;
-	} 
-	
+	}
+
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
-	
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -84,11 +84,11 @@ public class PesquisaAlunoBean implements Serializable{
 	public void setAlunos(List<Aluno> alunos) {
 		this.alunos = alunos;
 	}
-	
+
 	public String maskTelefone(Integer ddd, Integer telefone) {
-		if(telefone == null)
+		if (telefone == null)
 			return "";
 		return "(" + ddd + ") " + telefone;
 	}
-	
+
 }

@@ -9,6 +9,7 @@ import br.com.loucademia.application.util.StringUtils;
 import br.com.loucademia.application.util.Validation;
 import br.com.loucademia.application.util.ValidationException;
 import br.com.loucademia.domain.aluno.Aluno;
+import br.com.loucademia.domain.aluno.Aluno.Situacao;
 import br.com.loucademia.domain.aluno.AlunoRepository;
 
 @Stateless
@@ -49,6 +50,11 @@ public class AlunoService {
 			throw new ValidationException("Pelo menos um critério de pesquisa deve ser fornecido");
 		
 		return alunoRepository.listAlunos(matricula, nome, rg, telefone);
+	}
+	
+	public List<Aluno> listSituacoesAlunos(Situacao situacao){
+		Validation.assertNotEmpty(situacao);
+		return alunoRepository.listSituacoesAlunos(situacao);
 	}
 	
 	public void delete(String matricula) {
