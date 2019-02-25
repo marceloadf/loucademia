@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -26,6 +27,15 @@ public class AlunoRepository {
 
 	public Aluno findByMatricula(String matricula) {
 		return em.find(Aluno.class, matricula);
+	}
+
+	public Aluno findByRG(Integer rg) {
+		try {
+			return em.createQuery("SELECT a FROM Aluno a WHERE a.rg = :rg", Aluno.class).setParameter("rg", rg)
+					.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 	public void delete(String matricula) {
@@ -55,7 +65,7 @@ public class AlunoRepository {
 
 		if (telefone != null)
 			jpql.append("(a.telefone.numeroCelular LIKE :celular OR a.telefone.numeroFixo LIKE :fixo) AND ");
-		
+
 		jpql.append("1 = 1 ");
 
 		TypedQuery<Aluno> q = em.createQuery(jpql.toString(), Aluno.class);
@@ -73,7 +83,6 @@ public class AlunoRepository {
 			q.setParameter("celular", telefone);
 			q.setParameter("fixo", telefone);
 		}
-		
 
 		return q.getResultList();
 
