@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf" lang="pt-br">
+<ui:composition template="template/layout.xhtml">
+	<ui:define name="title">Relatório de Situações</ui:define>
+	<ui:define name="conteudo">
+
+		<br />
+		<form jsf:id="form">
+			<fieldset>
+				<legend>Parâmetros</legend>
+				<label for="id">ID:</label>
+				<br />
+				<input type="text" name="id" id="id"
+					jsf:value="#{relatorioEntradasSaidasBean.matricula}" />
+				<br />
+				<label for="dtIn">Data Inicial:</label>
+				<br />
+				<input type="date" name="dtIn" id="dtIn"
+					jsf:value="#{relatorioEntradasSaidasBean.dtInicial}">
+				<f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+				</input>
+				<br />
+				<label for="dtFim">Data Final:</label>
+				<br />
+				<input type="date" name="dtFim" id="dtFim"
+					jsf:value="#{relatorioEntradasSaidasBean.dtFinal}">
+				<f:convertDateTime type="localDate" pattern="yyyy-MM-dd" />
+				</input>
+				<br />
+			</fieldset>
+
+			<br />
+			<input type="submit" value="Gerar" name="btnGerar" id="btnGerar"
+				jsf:action="#{relatorioEntradasSaidasBean.gerarRelatorio}" />
+			<br />
+			<br />
+			<h:panelGroup
+				rendered="#{not empty relatorioEntradasSaidasBean.acessos}">
+				<table>
+					<tr>
+						<th>Matrícula</th>
+						<th>Nome</th>
+						<th>Entrada</th>
+						<th>Saída</th>
+						<th>Duração</th>
+					</tr>
+					<ui:repeat var="a" value="#{relatorioEntradasSaidasBean.acessos}">
+						<tr>
+							<td>#{a.aluno.matricula}</td>
+							<td>#{a.aluno.nome}</td>
+							<td>
+								<h:outputText value="#{a.entrada}">
+									<f:convertDateTime type="LocalDateTime"
+										pattern="dd/MM/yyyy HH:mm"></f:convertDateTime>
+								</h:outputText>
+							</td>
+							<td>
+								<h:outputText value="#{a.saida}">
+									<f:convertDateTime type="LocalDateTime"
+										pattern="dd/MM/yyyy HH:mm"></f:convertDateTime>
+								</h:outputText>
+							</td>
+							<td>??:??:??</td>
+						</tr>
+					</ui:repeat>
+				</table>
+			</h:panelGroup>
+		</form>
+	</ui:define>
+</ui:composition>
+</html>
