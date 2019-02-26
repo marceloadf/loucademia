@@ -27,15 +27,18 @@
 				<br />
 			</div>
 		</nav>
-		<h:panelGroup rendered="#{!facesContext.messageList.isEmpty()}">
-			<div id="infoMensagem">
-				<h:messages />
-			</div>
-		</h:panelGroup>
 	</header>
+
 	<h1>
 		<ui:insert name="title">Login</ui:insert>
 	</h1>
+	
+	<h:panelGroup rendered="#{!facesContext.messageList.isEmpty()}">
+		<div id="infoMensagem">
+			<h:messages />
+		</div>
+	</h:panelGroup>
+
 	<ui:insert name="conteudo" />
 </body>
 </html>

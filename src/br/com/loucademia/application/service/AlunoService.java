@@ -53,7 +53,10 @@ public class AlunoService {
 	}
 	
 	public List<Aluno> listSituacoesAlunos(Situacao situacao){
-		Validation.assertNotEmpty(situacao);
+		
+		if(situacao == null)
+			throw new ValidationException("Selecione uma situação");
+		
 		return alunoRepository.listSituacoesAlunos(situacao);
 	}
 	

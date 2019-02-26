@@ -54,7 +54,7 @@ public class Aluno implements Serializable{
 	private Endereco endereco = new Endereco();
 	
 	@Embedded
-	private Telefone telefone;
+	private Telefone telefone = new Telefone();
 
 	public String getMatricula() {
 		return matricula;

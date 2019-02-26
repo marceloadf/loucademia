@@ -13,17 +13,23 @@
 		<form jsf:id="form">
 			<fieldset>
 				<legend>Parâmetros</legend>
-				<label for="situacao">Situação:</label> <br /> <select
-					jsf:value="#{relatorioSituacoesBean.situacao}" name="situacao"
-					id="situacao" size="0">
-					<!-- <f:selectItem itemLabel="Selecione..." itemValue="" /> -->
+				<label for="situacao">Situação:</label>
+				<br />
+				<select jsf:value="#{relatorioSituacoesBean.situacao}"
+					name="situacao" id="situacao" size="0">
+					<f:selectItem itemLabel="Selecione..." itemValue="" />
 					<f:selectItems value="#{dataBean.situacao}" />
 				</select>
 			</fieldset>
-			<br /> <input type="button" value="Gerar" name="btnGerar"
-				id="btnGerar" jsf:action="#{relatorioSituacoesBean.gerarRelatorio}" />
 
 			<br />
+
+			<input type="submit" value="Gerar" name="btnGerar" id="btnGerar"
+				jsf:action="#{relatorioSituacoesBean.gerarRelatorio}" />
+
+			<br />
+			<br />
+
 			<h:panelGroup rendered="#{not empty relatorioSituacoesBean.alunos}">
 				<table>
 					<tr>
@@ -40,12 +46,16 @@
 							<td>#{a.situacao}</td>
 							<td>
 								#{relatorioSituacoesBean.maskTelefone(a.telefone.ddFixo,
-								a.telefone.numeroFixo)} <br />
+								a.telefone.numeroFixo)}
+								<br />
 								#{relatorioSituacoesBean.maskTelefone(a.telefone.ddCelular,
 								a.telefone.numeroCelular)}
 							</td>
-							<td><input type="button" value="Editar" name="btnEditar"
-								id="btnEditar" jsf:outcome="dadosAluno?matricula=#{a.matricula}" /></td>
+							<td>
+								<input type="button" value="Editar" name="btnEditar"
+									id="btnEditar"
+									jsf:outcome="dadosAluno?matricula=#{a.matricula}" />
+							</td>
 						</tr>
 					</ui:repeat>
 				</table>
