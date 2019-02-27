@@ -156,9 +156,9 @@
 
 			<br />
 			<input type="submit" jsf:action="#{alunoBean.gravar}"
-				name="btnGravar" id="btnGravar" value="Gravar" />
+				name="btnGravar" id="btnGravar" value="Gravar" />&#160;
 			<input type="button" name="btnRelatorio" id="btnRelatorio"
-				value="Relatorio" />
+				value="Relatorio de Entradas e Saídas" jsf:outcome="relatorioEntradasSaidas?matricula=#{alunoBean.aluno.matricula}" jsf:rendered="#{alunoBean.aluno.matricula != null}"/>
 		</form>
 	</ui:define>
 </ui:composition>

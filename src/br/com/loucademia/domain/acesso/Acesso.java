@@ -1,6 +1,7 @@
 package br.com.loucademia.domain.acesso;
 
 import java.io.Serializable;
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -16,49 +17,56 @@ import br.com.loucademia.domain.aluno.Aluno;
 
 @Entity
 @Table(name = "ENTRADAS_SAIDAS")
-public class Acesso implements Serializable{
-	
+public class Acesso implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", nullable = false)
 	private Integer id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "ALUNO_ID", nullable = false)
 	private Aluno aluno;
-	
+
 	@Column(name = "ENTRADA", nullable = false)
 	private LocalDateTime entrada;
-	
+
 	@Column(name = "SAIDA", nullable = true)
 	private LocalDateTime saida;
 
 	public boolean isEntradaSaidaPreenchidas() {
-		if(entrada != null && saida != null)
+		if (entrada != null && saida != null)
 			return true;
-		
+
 		return false;
 	}
-	
+
 	public TipoAcesso registrarAcesso() {
 		LocalDateTime now = LocalDateTime.now();
 		TipoAcesso tipoAcesso;
-		
-		if(entrada == null) {
+
+		if (entrada == null) {
 			entrada = now;
 			tipoAcesso = TipoAcesso.Entrada;
-		}
-		else if(saida == null) {
+		} else if (saida == null) {
 			saida = now;
 			tipoAcesso = TipoAcesso.Saida;
-		}
-		else {
+		} else {
 			tipoAcesso = null;
 		}
-		
+
 		return tipoAcesso;
 	}
-	
+
+	public String calcularDuracao() {
+		if (entrada == null || saida == null) {
+			return null;
+		}
+
+		Duration d = Duration.between(entrada, saida);
+		return String.format("%02d:%02d", d.toHoursPart(), d.toMinutesPart());
+	}
+
 	public Integer getId() {
 		return id;
 	}

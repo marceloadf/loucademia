@@ -2,9 +2,11 @@ package br.com.loucademia.interfaces.aluno.web;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.annotation.RequestParameterMap;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -16,7 +18,7 @@ import br.com.loucademia.domain.aluno.Aluno;
 
 @Named
 @SessionScoped
-public class PesquisaAlunoBean implements Serializable {
+public class PesquisaAlunoBean implements Serializable{
 
 	@EJB
 	private AlunoService alunoService;
@@ -24,12 +26,29 @@ public class PesquisaAlunoBean implements Serializable {
 	@Inject
 	private FacesContext facesContext;
 
+	@Inject
+	@RequestParameterMap
+	private Map<String, String> requestMap;
+	
 	private String matricula;
 	private String nome;
 	private Integer telefone;
 	private Integer rg;
 
 	private List<Aluno> alunos;
+	
+	public void check() {
+		String clear = requestMap.get("clear");
+		
+		if(clear != null && Boolean.valueOf(clear)) {
+			matricula = null;
+			nome = null;
+			rg = null;
+			telefone = null;
+			alunos = null;
+		}
+		
+	}	
 
 	public String pesquisar() {
 		try {

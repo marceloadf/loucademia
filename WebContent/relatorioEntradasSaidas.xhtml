@@ -6,7 +6,14 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:jsf="http://xmlns.jcp.org/jsf" lang="pt-br">
 <ui:composition template="template/layout.xhtml">
-	<ui:define name="title">Relatório de Situações</ui:define>
+	<f:metadata>
+		<f:viewParam name="matricula"
+			value="#{relatorioEntradasSaidasBean.matricula}" />
+		<f:viewAction
+			action="#{relatorioEntradasSaidasBean.carregarRelatorio()}" />
+	</f:metadata>
+
+	<ui:define name="title">Relatório de Entradas e Saídas</ui:define>
 	<ui:define name="conteudo">
 
 		<br />
@@ -55,17 +62,17 @@
 							<td>#{a.aluno.nome}</td>
 							<td>
 								<h:outputText value="#{a.entrada}">
-									<f:convertDateTime type="LocalDateTime"
-										pattern="dd/MM/yyyy HH:mm"></f:convertDateTime>
+									<f:convertDateTime type="localDateTime"
+										pattern="dd/MM/yyyy HH:mm" />
 								</h:outputText>
 							</td>
 							<td>
 								<h:outputText value="#{a.saida}">
-									<f:convertDateTime type="LocalDateTime"
-										pattern="dd/MM/yyyy HH:mm"></f:convertDateTime>
+									<f:convertDateTime type="localDateTime"
+										pattern="dd/MM/yyyy HH:mm" />
 								</h:outputText>
 							</td>
-							<td>??:??:??</td>
+							<td>#{a.calcularDuracao()}</td>
 						</tr>
 					</ui:repeat>
 				</table>

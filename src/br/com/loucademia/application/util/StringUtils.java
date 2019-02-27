@@ -12,10 +12,4 @@ public class StringUtils {
 	public static String leftZeroes(int value, int finalSize) {
 		return String.format("%0" + finalSize + "d", value);		
 	}
-	
-	
-	public static void main(String[] args) {
-		
-		System.out.println(StringUtils.leftZeroes(1, 6));
-	}
 }
