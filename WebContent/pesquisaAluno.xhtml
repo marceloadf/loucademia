@@ -6,7 +6,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:jsf="http://xmlns.jcp.org/jsf" lang="pt-br">
 <ui:composition template="template/layout.xhtml">
-	<ui:define name="title">Pesquisa Aluno</ui:define>
+	<ui:param name="title" value="Pesquisa de Aluno"></ui:param>
 	<ui:define name="conteudo">
 	<f:metadata>
 		<f:viewAction action="#{pesquisaAlunoBean.check()}"></f:viewAction>

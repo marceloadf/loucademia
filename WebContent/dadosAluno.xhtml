@@ -10,7 +10,8 @@
 		<f:viewParam name="matricula" value="#{alunoBean.matricula}" />
 		<f:viewAction action="#{alunoBean.carregar}" />
 	</f:metadata>
-	<ui:define name="title">#{alunoBean.titulo}</ui:define>
+	<!-- <ui:define name="title">#{alunoBean.titulo}</ui:define> -->
+	<ui:param name="title" value="#{alunoBean.titulo}"></ui:param>
 	<ui:define name="conteudo">
 		<br />
 		<form jsf:id="form">
