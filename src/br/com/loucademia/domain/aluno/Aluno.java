@@ -1,6 +1,7 @@
 package br.com.loucademia.domain.aluno;
 
 import java.io.Serializable;
+
 import java.time.LocalDate;
 import java.time.Year;
 
@@ -13,6 +14,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import br.com.loucademia.application.util.StringUtils;
+
+//TODO: IMPLEMENTAR NÃO REMOÇÃO DO ALUNO NO BANCO DE DADOS
+
 
 @Entity
 @Table(name = "ALUNO")
@@ -40,7 +44,7 @@ public class Aluno implements Serializable{
 	@Column(name = "DATA_NASCIMENTO", nullable = false)
 	private LocalDate dataNascimento;
 	
-	@Column(name = "RG", nullable = false, length = 10)
+	@Column(name = "RG", nullable = false, length = 10, unique = true)
 	private Integer rg;
 
 	@Enumerated(EnumType.ORDINAL)
